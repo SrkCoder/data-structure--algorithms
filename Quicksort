@@ -1,0 +1,57 @@
+#include<iostream>
+using namespace std;
+void input(int array[],int n) {
+    for(int k=0; k<n; k++) {
+        cin>>array[k];
+    }
+}
+void print(int array[],int n) {
+    for(int l=0; l<n; l++) {
+        cout<<array[l]<<endl;
+    }
+}
+void swap(int *ptr1,int *ptr2) {
+    int temp=*ptr1;
+    *ptr1=*ptr2;
+    *ptr2=temp;
+
+}
+int partition(int array[], int low, int high) {
+    int pivot=array[high];
+    int i=low-1;
+    for(int j=low; j<high; j++) {
+        if(array[j]<pivot) {
+            i++;
+            swap(&array[i],&array[j]);
+        }
+    }
+    swap(array[i+1],array[high]);
+    return i+1;
+
+}
+void quicksort(int array[],int low,int high) {
+    if(low<high) {
+        int pi=partition(array, low, high);
+        quicksort(array,low,pi-1); //left side
+        quicksort(array,pi+1,high);//righ side
+    }
+}
+int main()
+{
+    int n;
+    cout<<"enter size of array"<<endl;
+    cin>>n;  // taking size of array form user
+
+    int array[n];
+    input(array,n);   // taking elements of array from user
+
+    cout<<"array before sorting"<<endl;
+    print(array,n);
+
+    int low=0;
+    int high=n-1;
+    quicksort(array,low,high);
+    cout<<"array after sorting"<<endl;
+    print(array,n);
+    return 0;
+}
