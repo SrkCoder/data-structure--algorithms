@@ -6,7 +6,7 @@ class Node{
 		int data;
 		Node * next;
 };
-void insert(int data, Node* head, Node* tail){
+void insert(int data, Node* &head, Node* &tail){
 	Node * temp = new Node();
 	temp->data = data;
   
