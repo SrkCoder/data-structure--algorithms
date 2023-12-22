@@ -1,0 +1,70 @@
+#include <iostream>
+using namespace std;
+class Node
+{
+public:
+    int data;
+    Node *next;
+};
+class linklist
+{
+private:
+    Node *head;
+    Node *tail;
+
+public:
+    void insert(int data)
+    {
+        Node *temp;
+        temp = new Node();
+        temp->data = data;
+        if (head == NULL)
+        {
+            head = temp;
+        }
+        else
+        {
+            tail->next = temp;
+        }
+        tail = temp;
+    }
+    void display()
+    {
+        Node *temp = head;
+        while (temp)
+        {
+            cout << temp->data<<endl;
+            temp = temp->next;
+        }
+    }
+};
+int main()
+{
+
+    int data, choice;
+    linklist list;
+start:
+
+    cout << "******* LINKED LIST **********\n";
+    cout << "1-> INSERTION IN LINK LIST\n";
+    cout << "2-> DISPLAY LINK LIST\n";
+    cout << "3-> EXIT\n";
+    cout << "ENTER YOUR CHOICE:";
+    cin >> choice;
+    switch (choice)
+    {
+    case 1:
+    {
+        cout << "enter data" << endl;
+        cin >> data;
+        list.insert(data);
+        goto start;
+    }
+    case 2:
+    {
+        list.display();
+        goto start;
+    }
+    }
+}
+    
